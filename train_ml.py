@@ -61,6 +61,6 @@ cm = confusion_matrix(Y_test,y_prediction)
 print(cm)
 print(classification_report(Y_test,y_prediction))
 
-import joblib
+import joblibd
 joblib.dump(ensemble, 'model_ml.pkl')
 print("save สำเร็จ!")
