@@ -468,10 +468,10 @@ if page == "📗 Neural Network":
      # ── ส่วนทดสอบโมเดล ──────────────────────────────────────────
 
      try:
-          nn_model = tf.keras.models.load_model(os.path.join(BASE_DIR, 'nn_model.h5'))
+          nn_model = joblib.load(os.path.join(BASE_DIR, 'nn_model.pkl'))
           nn_scaler = joblib.load(os.path.join(BASE_DIR, 'scaler_nn.pkl'))
      except:
-          st.error("ไม่พบไฟล์ nn_model.h5 หรือ scaler_nn.pkl")
+          st.error("ไม่พบไฟล์ nn_model.pkl หรือ scaler_nn.pkl")
           st.stop()
 
      st.title("Diabetes Prediction")
@@ -505,8 +505,8 @@ if page == "📗 Neural Network":
      input_scaled = nn_scaler.transform(input_nn)
 
      if st.button("🔍 ทำนาย", type="primary"):
-          prob = nn_model.predict(input_scaled)[0][0]
-          result = 1 if prob > 0.5 else 0
+          prob = nn_model.predict_proba(input_scaled)[0][1]
+          result = nn_model.predict(input_scaled)[0]
 
           st.markdown("### ผลการทำนาย")
           if result == 0:
