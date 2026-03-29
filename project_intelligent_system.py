@@ -3,6 +3,8 @@ import joblib
 import numpy as np
 import pandas as pd
 import tensorflow as tf
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # ── Page config ────────────────────────────────────────────────
 st.set_page_config(
@@ -200,7 +202,7 @@ if page == "📘 ML Model":
      st.markdown("---")
 
      # โหลด model
-     model = joblib.load('model_ml.pkl')
+     model = joblib.load(os.path.join(BASE_DIR, 'model_ml.pkl'))
 
      st.title('Student Depression Prediction')
      st.write('กรอกข้อมูลเพื่อทำนายระดับ Depression')
@@ -466,8 +468,8 @@ if page == "📗 Neural Network":
      # ── ส่วนทดสอบโมเดล ──────────────────────────────────────────
 
      try:
-          nn_model = tf.keras.models.load_model('nn_model.h5')
-          nn_scaler = joblib.load('scaler_nn.pkl')
+          nn_model = tf.keras.models.load_model(os.path.join(BASE_DIR, 'nn_model.h5'))
+          nn_scaler = joblib.load(os.path.join(BASE_DIR, 'scaler_nn.pkl'))
      except:
           st.error("ไม่พบไฟล์ nn_model.h5 หรือ scaler_nn.pkl")
           st.stop()
