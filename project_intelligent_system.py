@@ -2,7 +2,6 @@ import streamlit as st
 import joblib
 import numpy as np
 import pandas as pd
-import tensorflow as tf
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
