@@ -466,7 +466,7 @@ if page == "📗 Neural Network":
      # ── ส่วนทดสอบโมเดล ──────────────────────────────────────────
 
      try:
-          nn_model = tf.models.load_model('nn_model.h5')
+          nn_model = tf.keras.models.load_model('nn_model.h5')
           nn_scaler = joblib.load('scaler_nn.pkl')
      except:
           st.error("ไม่พบไฟล์ nn_model.h5 หรือ scaler_nn.pkl")
