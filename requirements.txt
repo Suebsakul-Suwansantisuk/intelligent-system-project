@@ -3,4 +3,5 @@ scikit-learn
 pandas
 numpy
 joblib
-keras
+keras==2.13.1
+tensorflow==2.13.1
